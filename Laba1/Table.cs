@@ -31,7 +31,16 @@ namespace Laba1
             this.Name = Name;
             this.Path = Path;
         }
+        public static Bitmap ResizeBitmap(Bitmap bmp, int width, int height)
+        {
+            Bitmap result = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                g.DrawImage(bmp, 0, 0, width, height);
+            }
 
+            return result;
+        }
         public static T Clamp<T>(T val, T min, T max) where T : IComparable<T>
         {
             if (val.CompareTo(min) < 0) return min;
@@ -41,399 +50,459 @@ namespace Laba1
 
         public static Bitmap Con( BindingList<Table> images) 
         {
-            Bitmap ret = null;
- 
-            foreach (var im in images)
+            Bitmap return_image_out = null;
+
+            foreach (var im_from_list in images)
             {
-                Bitmap bitmap = new Bitmap(im.Path);
+                Bitmap bitmap_from_list = new Bitmap(im_from_list.Path);
 
-                var w = bitmap.Width;
-                var h = bitmap.Height;
+                Bitmap image_out = new Bitmap(bitmap_from_list.Width, bitmap_from_list.Height);
 
-                Bitmap image_out = new Bitmap(w, h);
-
-                switch (im.Regime)
+                switch (im_from_list.Regime)
                 {
                     case "Основа":
-                        for (int i = 0; i < h; ++i)
                         {
-                            for (int j = 0; j < w; ++j)
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
-                                var pix = bitmap.GetPixel(j, i);
-
-                                int red = pix.R;
-                                int green = pix.G;
-                                int blue = pix.B;
-
-                                pix = Color.FromArgb(red, green, blue);
-                                image_out.SetPixel(j, i, pix);
-                                ret = image_out;
-                            }
-                        }
-                        break;
-
-                    case "Умножение":
-                        image_out = ret;
-                        if (w > image_out.Width)
-                        {
-                            image_out = new Bitmap(image_out, w, ret.Height);
-                        }
-                        if (h > image_out.Height)
-                        {
-                            image_out = new Bitmap(image_out, ret.Width, h);
-                        }
-                        for (int i = 0; i < h; ++i)
-                        {
-                            for (int j = 0; j < w; ++j)
-                            {
-                                var pix = bitmap.GetPixel(j, i);
-                                var pic = image_out.GetPixel(j, i);
-
-                                int red;
-                                int redc = new int();
-
-                                int green;
-                                int greenc = new int();
-
-                                int blue;
-                                int bluec = new int();
-
-                                if (im.Red == true)
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
                                 {
-                                    red = pix.R;
-                                    redc = pic.R;
-                                    redc = (int)Clamp(redc * red / 255, 0, 255);
-                                }
-                                if (im.Green == true)
-                                {
-                                    green = pix.G;
-                                    greenc = pic.G;
-                                    greenc = (int)Clamp(greenc * green / 255, 0, 255);
-                                }
-                                if (im.Blue == true)
-                                {
-                                    blue = pix.B;
-                                    bluec = pic.B;
-                                    bluec = (int)Clamp(bluec * blue / 255, 0, 255);
-                                }
-                                if (redc != 0 || greenc != 0 || bluec != 0)
-                                {
-                                    
-                                    pic = Color.FromArgb(redc, greenc, bluec);
-                                    image_out.SetPixel(j, i, pic);
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+
+                                    int Red = pix_from_list.R;
+                                    int Green = pix_from_list.G;
+                                    int Blue = pix_from_list.B;
+
+                                    pix_from_list = Color.FromArgb(Red, Green, Blue);
+                                    image_out.SetPixel(j, i, pix_from_list);
                                 }
                             }
                         }
                         break;
 
                     case "Нет":
-                        image_out = ret;
-                        if (w > image_out.Width)
                         {
-                            image_out = new Bitmap(image_out, w, ret.Height);
-                        }
-                        if (h > image_out.Height)
-                        {
-                            image_out = new Bitmap(image_out, ret.Width, h);
-                        }
-                        for (int i = 0; i < h; ++i)
-                        {
-                            for (int j = 0; j < w; ++j)
+                            image_out = return_image_out;
+                            if (image_out.Width > bitmap_from_list.Width)
                             {
-                                var pic = image_out.GetPixel(j, i);
-                                var pix = bitmap.GetPixel(j, i);
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+                            }
 
-                                int redc = pic.R;
-                                int red = pix.R;
+                            if (image_out.Height > bitmap_from_list.Height)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+                            }
 
-                                int greenc = pic.G;
-                                int green = pix.G;
-
-                                int bluec = pic.B;
-                                int blue = pix.B;
-
-                                if (red != 0 && green !=0 && blue !=0 )
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
+                            {
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
                                 {
-                                    red = (int)Clamp(red, 0, 255);
-                                    green = (int)Clamp(green, 0, 255);
-                                    blue = (int)Clamp(blue, 0, 255);
-                                    pic = Color.FromArgb(red, green, blue);
-                                    image_out.SetPixel(j, i, pic);
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+                                    var pix_from_image_out = image_out.GetPixel(j, i);
+
+                                    int Red_from_list = pix_from_list.R;
+                                    int Red_from_image_out = pix_from_image_out.R;
+
+                                    int Green_from_list = pix_from_list.G;
+                                    int Green_from_image_out = pix_from_image_out.G;
+
+                                    int Blue_from_list = pix_from_list.B;
+                                    int Blue_from_image_out = pix_from_image_out.B;
+
+                                    if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
+                                    {
+                                        pix_from_image_out = Color.FromArgb(Red_from_list, Green_from_list, Blue_from_list);
+                                        image_out.SetPixel(j, i, pix_from_image_out);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+
+                    case "Умножение":
+                        {
+                            image_out = return_image_out;
+                            if (image_out.Width > bitmap_from_list.Width)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+                            }
+
+                            if (image_out.Height > bitmap_from_list.Height)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+                            }
+
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
+                            {
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
+                                {
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+                                    var pix_from_image_out = image_out.GetPixel(j, i);
+
+                                    int Red_from_list = new int();
+                                    int Red_from_image_out;
+
+                                    int Green_from_list = new int();
+                                    int Green_from_image_out;
+
+                                    int Blue_from_list = new int();
+                                    int Blue_from_image_out;
+
+                                    if (im_from_list.Red == true)
+                                    {
+                                        Red_from_list = pix_from_list.R;
+                                        Red_from_image_out = pix_from_image_out.R;
+                                        Red_from_list = (int)Clamp(Red_from_list * Red_from_image_out / 255, 0, 255);
+                                    }
+                                    if (im_from_list.Green == true)
+                                    {
+                                        Green_from_list = pix_from_list.G;
+                                        Green_from_image_out = pix_from_image_out.G;
+                                        Green_from_list = (int)Clamp(Green_from_list * Green_from_image_out / 255, 0, 255);
+                                    }
+                                    if (im_from_list.Blue == true)
+                                    {
+                                        Blue_from_list = pix_from_list.B;
+                                        Blue_from_image_out = pix_from_image_out.B;
+                                        Blue_from_list = (int)Clamp(Blue_from_list * Blue_from_image_out / 255, 0, 255);
+                                    }
+
+                                    if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
+                                    {
+                                        pix_from_image_out = Color.FromArgb(Red_from_list, Green_from_list, Blue_from_list);
+                                        image_out.SetPixel(j, i, pix_from_image_out);
+                                    }
                                 }
                             }
                         }
                         break;
 
                     case "Сумма":
-                        image_out = ret;
-                        if (w > image_out.Width)
                         {
-                            image_out = new Bitmap(image_out, w, ret.Height);
-                        }
-                        if (h > image_out.Height)
-                        {
-                            image_out = new Bitmap(image_out, ret.Width, h);
-                        }
-                        for (int i = 0; i < h; ++i)
-                        {
-                            for (int j = 0; j < w; ++j)
+                            image_out = return_image_out;
+                            if (image_out.Width > bitmap_from_list.Width)
                             {
-                                var pic = image_out.GetPixel(j, i);
-                                var pix = bitmap.GetPixel(j, i);
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+                            }
 
-                                int red = new int();
-                                int redc;
+                            if (image_out.Height > bitmap_from_list.Height)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+                            }
 
-                                int green = new int();
-                                int greenc;
-
-                                int blue = new int();
-                                int bluec;
-
-                                if (im.Red == true)
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
+                            {
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
                                 {
-                                    red = pix.R;
-                                    redc = pic.R;
-                                    red = (int)Clamp(red + redc, 0, 255);
-                                }
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+                                    var pix_from_image_out = image_out.GetPixel(j, i);
 
-                                if (im.Green == true)
-                                {
-                                    green = pix.G;
-                                    greenc = pic.G;
-                                    green = (int)Clamp(green + greenc, 0, 255);
-                                }
+                                    int Red_from_list = new int();
+                                    int Red_from_image_out;
 
-                                if (im.Blue == true)
-                                {
-                                    blue = pix.B;
-                                    bluec = pic.B;
-                                    blue = (int)Clamp(blue + bluec, 0, 255);
-                                }
+                                    int Green_from_list = new int();
+                                    int Green_from_image_out;
 
-                                if (red != 0 || green != 0 || blue != 0)
-                                {
+                                    int Blue_from_list = new int();
+                                    int Blue_from_image_out;
 
-                                    pic = Color.FromArgb(red, green, blue);
-                                    image_out.SetPixel(j, i, pic);
+                                    if (im_from_list.Red == true)
+                                    {
+                                        Red_from_list = pix_from_list.R;
+                                        Red_from_image_out = pix_from_image_out.R;
+                                        Red_from_list = (int)Clamp(Red_from_list + Red_from_image_out, 0, 255);
+                                    }
+                                    if (im_from_list.Green == true)
+                                    {
+                                        Green_from_list = pix_from_list.G;
+                                        Green_from_image_out = pix_from_image_out.G;
+                                        Green_from_list = (int)Clamp(Green_from_list + Green_from_image_out, 0, 255);
+                                    }
+                                    if (im_from_list.Blue == true)
+                                    {
+                                        Blue_from_list = pix_from_list.B;
+                                        Blue_from_image_out = pix_from_image_out.B;
+                                        Blue_from_list = (int)Clamp(Blue_from_list + Blue_from_image_out, 0, 255);
+                                    }
+
+                                    if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
+                                    {
+                                        pix_from_image_out = Color.FromArgb(Red_from_list, Green_from_list, Blue_from_list);
+                                        image_out.SetPixel(j, i, pix_from_image_out);
+                                    }
                                 }
                             }
                         }
                         break;
 
                     case "Разность":
-                        image_out = ret;
-                        if (w > image_out.Width)
                         {
-                            image_out = new Bitmap(image_out, w, ret.Height);
-                        }
-                        if (h > image_out.Height)
-                        {
-                            image_out = new Bitmap(image_out, ret.Width, h);
-                        }
-                        for (int i = 0; i < h; ++i)
-                        {
-                            for (int j = 0; j < w; ++j)
+                            image_out = return_image_out;
+                            if (image_out.Width > bitmap_from_list.Width)
                             {
-                                var pic = image_out.GetPixel(j, i);
-                                var pix = bitmap.GetPixel(j, i);
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+                            }
 
-                                int red = new int();
-                                int redc;
+                            if (image_out.Height > bitmap_from_list.Height)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+                            }
 
-                                int green = new int();
-                                int greenc;
-
-                                int blue = new int();
-                                int bluec;
-
-                                if (im.Red == true)
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
+                            {
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
                                 {
-                                    red = pix.R;
-                                    redc = pic.R;
-                                    red = (int)Clamp(redc - red, 0, 255);
-                                }
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+                                    var pix_from_image_out = image_out.GetPixel(j, i);
 
-                                if (im.Green == true)
-                                {
-                                    green = pix.G;
-                                    greenc = pic.G;
-                                    green = (int)Clamp(greenc - green, 0, 255);
-                                }
+                                    int Red_from_list = new int();
+                                    int Red_from_image_out;
 
-                                if (im.Blue == true)
-                                {
-                                    blue = pix.B;
-                                    bluec = pic.B;
-                                    blue = (int)Clamp(bluec - blue, 0, 255);
-                                }
+                                    int Green_from_list = new int();
+                                    int Green_from_image_out;
 
-                                if (red != 0 || green != 0 || blue != 0)
-                                {
-                                    pic = Color.FromArgb(red, green, blue);
-                                    image_out.SetPixel(j, i, pic);
+                                    int Blue_from_list = new int();
+                                    int Blue_from_image_out;
+
+                                    if (im_from_list.Red == true)
+                                    {
+                                        Red_from_list = pix_from_list.R;
+                                        Red_from_image_out = pix_from_image_out.R;
+                                        Red_from_list = (int)Clamp(Red_from_image_out - Red_from_list, 0, 255);
+                                    }
+                                    if (im_from_list.Green == true)
+                                    {
+                                        Green_from_list = pix_from_list.G;
+                                        Green_from_image_out = pix_from_image_out.G;
+                                        Green_from_list = (int)Clamp(Green_from_image_out - Green_from_list, 0, 255);
+                                    }
+                                    if (im_from_list.Blue == true)
+                                    {
+                                        Blue_from_list = pix_from_list.B;
+                                        Blue_from_image_out = pix_from_image_out.B;
+                                        Blue_from_list = (int)Clamp(Blue_from_image_out - Blue_from_list, 0, 255);
+                                    }
+
+                                    if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
+                                    {
+                                        pix_from_image_out = Color.FromArgb(Red_from_list, Green_from_list, Blue_from_list);
+                                        image_out.SetPixel(j, i, pix_from_image_out);
+                                    }
                                 }
                             }
                         }
                         break;
 
                     case "Минимум":
-                        image_out = ret;
-                        if (w > image_out.Width)
                         {
-                            image_out = new Bitmap(image_out, w, ret.Height);
-                        }
-                        if (h > image_out.Height)
-                        {
-                            image_out = new Bitmap(image_out, ret.Width, h);
-                        }
-                        for (int i = 0; i < h; ++i)
-                        {
-                            for (int j = 0; j < w; ++j)
+                            image_out = return_image_out;
+                            if (image_out.Width > bitmap_from_list.Width)
                             {
-                                var pic = image_out.GetPixel(j, i);
-                                var pix = bitmap.GetPixel(j, i);
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+                            }
 
-                                int red = new int();
-                                int redc;
+                            if (image_out.Height > bitmap_from_list.Height)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+                            }
 
-                                int green = new int();
-                                int greenc;
-
-                                int blue = new int();
-                                int bluec;
-
-                                if (im.Red == true)
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
+                            {
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
                                 {
-                                    red = pix.R;
-                                    redc = pic.R;
-                                    if (red < redc)
-                                    {
-                                        red = (int)Clamp(red, 0, 255);
-                                    }
-                                    else
-                                    {
-                                        red = (int)Clamp(redc, 0, 255);
-                                    }
-                                }
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+                                    var pix_from_image_out = image_out.GetPixel(j, i);
 
-                                if (im.Green == true)
-                                {
-                                    green = pix.G;
-                                    greenc = pic.G;
-                                    if (green < greenc)
-                                    {
-                                        green = (int)Clamp(green, 0, 255);
-                                    }
-                                    else
-                                    {
-                                        green = (int)Clamp(greenc, 0, 255);
-                                    }
-                                }
+                                    int Red_from_list = new int();
+                                    int Red_from_image_out;
 
-                                if (im.Blue == true)
-                                {
-                                    blue = pix.B;
-                                    bluec = pic.B;
-                                    if (blue < bluec)
-                                    {
-                                        blue = (int)Clamp(blue, 0, 255);
-                                    }
-                                    else
-                                    {
-                                        blue = (int)Clamp(bluec, 0, 255);
-                                    }
-                                }
+                                    int Green_from_list = new int();
+                                    int Green_from_image_out;
 
-                                if (red != 0 || green != 0 || blue != 0)
-                                {
-                                    pic = Color.FromArgb(red, green, blue);
-                                    image_out.SetPixel(j, i, pic);
+                                    int Blue_from_list = new int();
+                                    int Blue_from_image_out;
+
+                                    if (im_from_list.Red == true)
+                                    {
+                                        Red_from_list = pix_from_list.R;
+                                        Red_from_image_out = pix_from_image_out.R;
+                                        if (Red_from_list <= Red_from_image_out)
+                                        {
+                                            Red_from_list = (int)Clamp(Red_from_list, 0, 255);
+                                        }
+                                        else
+                                        {
+                                            Red_from_list = (int)Clamp(Red_from_image_out, 0, 255);
+                                        }
+                                        
+                                    }
+                                    if (im_from_list.Green == true)
+                                    {
+                                        Green_from_list = pix_from_list.G;
+                                        Green_from_image_out = pix_from_image_out.G;
+                                        if (Green_from_list <= Green_from_image_out)
+                                        {
+                                            Green_from_list = (int)Clamp(Green_from_list, 0, 255);
+                                        }
+                                        else
+                                        {
+                                            Green_from_list = (int)Clamp(Green_from_image_out, 0, 255);
+                                        }
+                                    }
+                                    if (im_from_list.Blue == true)
+                                    {
+                                        Blue_from_list = pix_from_list.B;
+                                        Blue_from_image_out = pix_from_image_out.B;
+                                        if (Blue_from_list <= Blue_from_image_out)
+                                        {
+                                            Blue_from_list = (int)Clamp(Blue_from_list, 0, 255);
+                                        }
+                                        else
+                                        {
+                                            Blue_from_list = (int)Clamp(Blue_from_image_out, 0, 255);
+                                        }
+                                    }
+
+                                    if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
+                                    {
+                                        pix_from_image_out = Color.FromArgb(Red_from_list, Green_from_list, Blue_from_list);
+                                        image_out.SetPixel(j, i, pix_from_image_out);
+                                    }
                                 }
                             }
                         }
                         break;
 
                     case "Максимум":
-                        image_out = ret;
-                        if (w > image_out.Width)
                         {
-                            image_out = new Bitmap(image_out, w, ret.Height);
-                        }
-                        if (h > image_out.Height)
-                        {
-                            image_out = new Bitmap(image_out, ret.Width, h);
-                        }
-                        for (int i = 0; i < h; ++i)
-                        {
-                            for (int j = 0; j < w; ++j)
+                            image_out = return_image_out;
+                            if (image_out.Width > bitmap_from_list.Width)
                             {
-                                var pic = image_out.GetPixel(j, i);
-                                var pix = bitmap.GetPixel(j, i);
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+                            }
 
-                                int red = new int();
-                                int redc;
+                            if (image_out.Height > bitmap_from_list.Height)
+                            {
+                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+                            }
+                            else
+                            {
+                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+                            }
 
-                                int green = new int();
-                                int greenc;
-
-                                int blue = new int();
-                                int bluec;
-
-                                if (im.Red == true)
+                            for (int i = 0; i < bitmap_from_list.Height; ++i)
+                            {
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)
                                 {
-                                    red = pix.R;
-                                    redc = pic.R;
-                                    if (red > redc)
-                                    {
-                                        red = (int)Clamp(red, 0, 255);
-                                    }
-                                    else
-                                    {
-                                        red = (int)Clamp(redc, 0, 255);
-                                    }
-                                }
+                                    var pix_from_list = bitmap_from_list.GetPixel(j, i);
+                                    var pix_from_image_out = image_out.GetPixel(j, i);
 
-                                if (im.Green == true)
-                                {
-                                    green = pix.G;
-                                    greenc = pic.G;
-                                    if (green > greenc)
-                                    {
-                                        green = (int)Clamp(green, 0, 255);
-                                    }
-                                    else
-                                    {
-                                        green = (int)Clamp(greenc, 0, 255);
-                                    }
-                                }
+                                    int Red_from_list = new int();
+                                    int Red_from_image_out;
 
-                                if (im.Blue == true)
-                                {
-                                    blue = pix.B;
-                                    bluec = pic.B;
-                                    if (blue > bluec)
-                                    {
-                                        blue = (int)Clamp(blue, 0, 255);
-                                    }
-                                    else
-                                    {
-                                        blue = (int)Clamp(bluec, 0, 255);
-                                    }
-                                }
+                                    int Green_from_list = new int();
+                                    int Green_from_image_out;
 
-                                if (red != 0 || green != 0 || blue != 0)
-                                {
-                                    pic = Color.FromArgb(red, green, blue);
-                                    image_out.SetPixel(j, i, pic);
+                                    int Blue_from_list = new int();
+                                    int Blue_from_image_out;
+
+                                    if (im_from_list.Red == true)
+                                    {
+                                        Red_from_list = pix_from_list.R;
+                                        Red_from_image_out = pix_from_image_out.R;
+                                        if (Red_from_list >= Red_from_image_out)
+                                        {
+                                            Red_from_list = (int)Clamp(Red_from_list, 0, 255);
+                                        }
+                                        else
+                                        {
+                                            Red_from_list = (int)Clamp(Red_from_image_out, 0, 255);
+                                        }
+
+                                    }
+                                    if (im_from_list.Green == true)
+                                    {
+                                        Green_from_list = pix_from_list.G;
+                                        Green_from_image_out = pix_from_image_out.G;
+                                        if (Green_from_list >= Green_from_image_out)
+                                        {
+                                            Green_from_list = (int)Clamp(Green_from_list, 0, 255);
+                                        }
+                                        else
+                                        {
+                                            Green_from_list = (int)Clamp(Green_from_image_out, 0, 255);
+                                        }
+                                    }
+                                    if (im_from_list.Blue == true)
+                                    {
+                                        Blue_from_list = pix_from_list.B;
+                                        Blue_from_image_out = pix_from_image_out.B;
+                                        if (Blue_from_list >= Blue_from_image_out)
+                                        {
+                                            Blue_from_list = (int)Clamp(Blue_from_list, 0, 255);
+                                        }
+                                        else
+                                        {
+                                            Blue_from_list = (int)Clamp(Blue_from_image_out, 0, 255);
+                                        }
+                                    }
+
+                                    if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
+                                    {
+                                        pix_from_image_out = Color.FromArgb(Red_from_list, Green_from_list, Blue_from_list);
+                                        image_out.SetPixel(j, i, pix_from_image_out);
+                                    }
                                 }
                             }
                         }
                         break;
                 }
-                ret = image_out;
+                return_image_out = image_out;
             }
-            return ret;
+            return return_image_out; 
         }
     }
 }

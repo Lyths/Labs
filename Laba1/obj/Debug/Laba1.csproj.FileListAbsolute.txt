@@ -18,3 +18,13 @@ C:\Users\Артур\Desktop\Лабы\СЦОИ\Лаба №1\Laba1\obj\Debug\Laba
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Лаба №1\Laba1\obj\Debug\Laba1.csproj.CoreCompileInputs.cache
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Лаба №1\Laba1\obj\Debug\Laba1.exe
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Лаба №1\Laba1\obj\Debug\Laba1.pdb
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\bin\Debug\Laba1.exe.config
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\bin\Debug\Laba1.exe
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\bin\Debug\Laba1.pdb
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.csproj.AssemblyReference.cache
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.Form1.resources
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.Properties.Resources.resources
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.csproj.GenerateResource.cache
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.csproj.CoreCompileInputs.cache
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.exe
+C:\Users\Артур\Desktop\Мусорка\Lab1\Laba1\obj\Debug\Laba1.pdb
