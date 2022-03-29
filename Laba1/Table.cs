@@ -48,6 +48,27 @@ namespace Laba1
             else return val;
         }
 
+        public static void W_and_H(ref Bitmap image_out, ref Bitmap bitmap_from_list)
+        {
+            if (image_out.Width > bitmap_from_list.Width)
+            {
+                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
+            }
+            else
+            {
+                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
+            }
+
+            if (image_out.Height > bitmap_from_list.Height)
+            {
+                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
+            }
+            else
+            {
+                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
+            }
+        }
+
         public static Bitmap Con( BindingList<Table> images) 
         {
             Bitmap return_image_out = null;
@@ -82,23 +103,7 @@ namespace Laba1
                     case "Нет":
                         {
                             image_out = return_image_out;
-                            if (image_out.Width > bitmap_from_list.Width)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
-                            }
-
-                            if (image_out.Height > bitmap_from_list.Height)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
-                            }
+                            W_and_H(ref image_out, ref bitmap_from_list);
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
@@ -129,23 +134,7 @@ namespace Laba1
                     case "Умножение":
                         {
                             image_out = return_image_out;
-                            if (image_out.Width > bitmap_from_list.Width)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
-                            }
-
-                            if (image_out.Height > bitmap_from_list.Height)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
-                            }
+                            W_and_H(ref image_out, ref bitmap_from_list);
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
@@ -195,23 +184,7 @@ namespace Laba1
                     case "Сумма":
                         {
                             image_out = return_image_out;
-                            if (image_out.Width > bitmap_from_list.Width)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
-                            }
-
-                            if (image_out.Height > bitmap_from_list.Height)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
-                            }
+                            W_and_H(ref image_out, ref bitmap_from_list);
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
@@ -261,23 +234,7 @@ namespace Laba1
                     case "Разность":
                         {
                             image_out = return_image_out;
-                            if (image_out.Width > bitmap_from_list.Width)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
-                            }
-
-                            if (image_out.Height > bitmap_from_list.Height)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
-                            }
+                            W_and_H(ref image_out, ref bitmap_from_list);
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
@@ -327,23 +284,7 @@ namespace Laba1
                     case "Минимум":
                         {
                             image_out = return_image_out;
-                            if (image_out.Width > bitmap_from_list.Width)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
-                            }
-
-                            if (image_out.Height > bitmap_from_list.Height)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
-                            }
+                            W_and_H(ref image_out, ref bitmap_from_list);
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
@@ -415,23 +356,7 @@ namespace Laba1
                     case "Максимум":
                         {
                             image_out = return_image_out;
-                            if (image_out.Width > bitmap_from_list.Width)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, image_out.Width, bitmap_from_list.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, bitmap_from_list.Width, image_out.Height);
-                            }
-
-                            if (image_out.Height > bitmap_from_list.Height)
-                            {
-                                bitmap_from_list = ResizeBitmap(bitmap_from_list, bitmap_from_list.Width, image_out.Height);
-                            }
-                            else
-                            {
-                                image_out = ResizeBitmap(image_out, image_out.Width, bitmap_from_list.Height);
-                            }
+                            W_and_H(ref image_out, ref bitmap_from_list);
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
