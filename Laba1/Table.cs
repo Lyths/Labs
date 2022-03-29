@@ -265,19 +265,31 @@ namespace Laba1
                                     {
                                         Red_from_list = pix_from_list.R;
                                         Red_from_image_out = pix_from_image_out.R;
-                                        Red_from_list = (int)Clamp(Red_from_image_out - Red_from_list, 0, 255);
+                                        if (Red_from_list !=0)
+                                        {
+                                            Red_from_list = (int)Clamp(Red_from_image_out - Red_from_list, 0, 255);
+                                        }
+                                        
                                     }
                                     if (im_from_list.Green == true)
                                     {
                                         Green_from_list = pix_from_list.G;
                                         Green_from_image_out = pix_from_image_out.G;
-                                        Green_from_list = (int)Clamp(Green_from_image_out - Green_from_list, 0, 255);
+                                        if (Green_from_list != 0)
+                                        {
+                                            Green_from_list = (int)Clamp(Green_from_image_out - Green_from_list, 0, 255);
+                                        }
+                                        
                                     }
                                     if (im_from_list.Blue == true)
                                     {
                                         Blue_from_list = pix_from_list.B;
                                         Blue_from_image_out = pix_from_image_out.B;
-                                        Blue_from_list = (int)Clamp(Blue_from_image_out - Blue_from_list, 0, 255);
+                                        if (Blue_from_list != 0)
+                                        {
+                                            Blue_from_list = (int)Clamp(Blue_from_image_out - Blue_from_list, 0, 255);
+                                        }
+                                        
                                     }
 
                                     if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
@@ -387,40 +399,48 @@ namespace Laba1
                                     {
                                         Red_from_list = pix_from_list.R;
                                         Red_from_image_out = pix_from_image_out.R;
-                                        if (Red_from_list >= Red_from_image_out)
+                                        if (Red_from_list != 0)
                                         {
-                                            Red_from_list = (int)Clamp(Red_from_list, 0, 255);
+                                            if (Red_from_list >= Red_from_image_out)
+                                            {
+                                                Red_from_list = (int)Clamp(Red_from_list, 0, 255);
+                                            }
+                                            else
+                                            {
+                                                Red_from_list = (int)Clamp(Red_from_image_out, 0, 255);
+                                            }
                                         }
-                                        else
-                                        {
-                                            Red_from_list = (int)Clamp(Red_from_image_out, 0, 255);
-                                        }
-
                                     }
                                     if (im_from_list.Green == true)
                                     {
                                         Green_from_list = pix_from_list.G;
                                         Green_from_image_out = pix_from_image_out.G;
-                                        if (Green_from_list >= Green_from_image_out)
+                                        if (Green_from_list !=0)
                                         {
-                                            Green_from_list = (int)Clamp(Green_from_list, 0, 255);
-                                        }
-                                        else
-                                        {
-                                            Green_from_list = (int)Clamp(Green_from_image_out, 0, 255);
+                                            if (Green_from_list >= Green_from_image_out)
+                                            {
+                                                Green_from_list = (int)Clamp(Green_from_list, 0, 255);
+                                            }
+                                            else
+                                            {
+                                                Green_from_list = (int)Clamp(Green_from_image_out, 0, 255);
+                                            }
                                         }
                                     }
                                     if (im_from_list.Blue == true)
                                     {
                                         Blue_from_list = pix_from_list.B;
                                         Blue_from_image_out = pix_from_image_out.B;
-                                        if (Blue_from_list >= Blue_from_image_out)
+                                        if (Blue_from_list !=0)
                                         {
-                                            Blue_from_list = (int)Clamp(Blue_from_list, 0, 255);
-                                        }
-                                        else
-                                        {
-                                            Blue_from_list = (int)Clamp(Blue_from_image_out, 0, 255);
+                                            if (Blue_from_list >= Blue_from_image_out)
+                                            {
+                                                Blue_from_list = (int)Clamp(Blue_from_list, 0, 255);
+                                            }
+                                            else
+                                            {
+                                                Blue_from_list = (int)Clamp(Blue_from_image_out, 0, 255);
+                                            }
                                         }
                                     }
 
