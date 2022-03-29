@@ -206,19 +206,28 @@ namespace Laba1
                                     {
                                         Red_from_list = pix_from_list.R;
                                         Red_from_image_out = pix_from_image_out.R;
-                                        Red_from_list = (int)Clamp(Red_from_list + Red_from_image_out, 0, 255);
+                                        if (Red_from_list != 0)
+                                        {
+                                            Red_from_list = (int)Clamp(Red_from_list + Red_from_image_out, 0, 255);
+                                        }
                                     }
                                     if (im_from_list.Green == true)
                                     {
                                         Green_from_list = pix_from_list.G;
                                         Green_from_image_out = pix_from_image_out.G;
-                                        Green_from_list = (int)Clamp(Green_from_list + Green_from_image_out, 0, 255);
+                                        if (Green_from_list != 0)
+                                        {
+                                            Green_from_list = (int)Clamp(Green_from_list + Green_from_image_out, 0, 255);
+                                        }
                                     }
                                     if (im_from_list.Blue == true)
                                     {
                                         Blue_from_list = pix_from_list.B;
                                         Blue_from_image_out = pix_from_image_out.B;
-                                        Blue_from_list = (int)Clamp(Blue_from_list + Blue_from_image_out, 0, 255);
+                                        if (Blue_from_list != 0)
+                                        {
+                                            Blue_from_list = (int)Clamp(Blue_from_list + Blue_from_image_out, 0, 255);
+                                        }
                                     }
 
                                     if (Red_from_list != 0 || Green_from_list != 0 || Blue_from_list != 0)
@@ -238,7 +247,7 @@ namespace Laba1
 
                             for (int i = 0; i < bitmap_from_list.Height; ++i)
                             {
-                                for (int j = 0; j < bitmap_from_list.Width; ++j)
+                                for (int j = 0; j < bitmap_from_list.Width; ++j)    
                                 {
                                     var pix_from_list = bitmap_from_list.GetPixel(j, i);
                                     var pix_from_image_out = image_out.GetPixel(j, i);
