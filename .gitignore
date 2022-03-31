@@ -385,7 +385,5 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/windows,visualstudio
 .vs/Laba1/v17/.suo
-Laba1/bin/Debug/Laba1.exe
-Laba1/bin/Debug/Laba1.pdb
 Laba1/obj/Debug/Laba1.csproj.GenerateResource.cache
-Laba1/obj/Debug/Laba1.pdb
+

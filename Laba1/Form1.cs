@@ -202,13 +202,20 @@ namespace Laba1
                 pictureBox1.Image = null;
                 image.Dispose();
             }
-            int index = tables.IndexOf(tables.FirstOrDefault(x => int.Equals(x.Num, Convert.ToInt32(DataGrid.CurrentRow.Cells[0].Value.ToString()))));
-            tables.RemoveAt(index);
-            for (int i = index; i < tables.Count; i++)
+            if (DataGrid.CurrentRow.Cells[2].Value.ToString() != "Основа")
             {
-                tables[i].Num -= 1;
+                int index = tables.IndexOf(tables.FirstOrDefault(x => int.Equals(x.Num, Convert.ToInt32(DataGrid.CurrentRow.Cells[0].Value.ToString()))));
+                tables.RemoveAt(index);
+                for (int i = index; i < tables.Count; i++)
+                {
+                    tables[i].Num -= 1;
+                }
+                Counter_Rows -= 1;
             }
-            Counter_Rows -= 1;
+            else
+            {
+                MessageBox.Show("Удалить основу невозможно");
+            }
         }
     }
 }
