@@ -46,6 +46,7 @@ namespace Laba1
             this.Add = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Clear = new System.Windows.Forms.Button();
+            this.Remove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -215,6 +216,7 @@ namespace Laba1
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.Remove);
             this.groupBox5.Controls.Add(this.Clear);
             this.groupBox5.Location = new System.Drawing.Point(522, 299);
             this.groupBox5.Name = "groupBox5";
@@ -225,13 +227,24 @@ namespace Laba1
             // Clear
             // 
             this.Clear.Enabled = false;
-            this.Clear.Location = new System.Drawing.Point(65, 14);
+            this.Clear.Location = new System.Drawing.Point(6, 14);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(75, 23);
             this.Clear.TabIndex = 11;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
+            // Remove
+            // 
+            this.Remove.Enabled = false;
+            this.Remove.Location = new System.Drawing.Point(119, 14);
+            this.Remove.Name = "Remove";
+            this.Remove.Size = new System.Drawing.Size(75, 23);
+            this.Remove.TabIndex = 11;
+            this.Remove.Text = "Remove";
+            this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
             // Form1
             // 
@@ -278,6 +291,7 @@ namespace Laba1
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.Button Remove;
     }
 }
 

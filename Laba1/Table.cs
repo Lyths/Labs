@@ -13,7 +13,7 @@ namespace Laba1
 {
     class Table
     {
-        public int Num { get; }
+        public int Num { get; set; }
         public string Name { get; }
         public string Regime { get; }
         public bool Red { get; }
