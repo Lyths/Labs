@@ -84,6 +84,7 @@ namespace Laba1
                     checkBox_Red.Enabled = true;
                     checkBox_Green.Enabled = true;
                     checkBox_Blue.Enabled = true;
+                    Remove.Enabled = false;
                     comboBox_regimes.SelectedItem = "Нет";
                     Clear.Enabled = true;
                     if (comboBox_regimes.Text == "Нет")
@@ -115,6 +116,7 @@ namespace Laba1
                 openfile.RestoreDirectory = true;
                 if (openfile.ShowDialog() == DialogResult.OK)
                 {
+
                     tables.Add(new Table(Counter_Rows, openfile.SafeFileName, comboBox_regimes.Text, checkBox_Red.Checked, checkBox_Green.Checked, checkBox_Blue.Checked,  openfile.FileName));
                     DataGrid.DataSource = tables;
 
@@ -122,6 +124,7 @@ namespace Laba1
                 }
                 Apply.Enabled = true;
                 path = openfile.FileName;
+                Remove.Enabled = true;
             }
         }
 
@@ -163,6 +166,7 @@ namespace Laba1
             checkBox_Red.Checked = false;
             checkBox_Green.Checked = false;
             checkBox_Blue.Checked = false;
+            Remove.Enabled = false;
             comboBox_regimes.SelectedItem = "Нет";
             if (comboBox_regimes.Text == "Нет")
             {
@@ -189,6 +193,22 @@ namespace Laba1
                     checkBox_Blue.Enabled = false;
                 }
             }
+        }
+
+        private void Remove_Click(object sender, EventArgs e)
+        {
+            if (image != null)
+            {
+                pictureBox1.Image = null;
+                image.Dispose();
+            }
+            int index = tables.IndexOf(tables.FirstOrDefault(x => int.Equals(x.Num, Convert.ToInt32(DataGrid.CurrentRow.Cells[0].Value.ToString()))));
+            tables.RemoveAt(index);
+            for (int i = index; i < tables.Count; i++)
+            {
+                tables[i].Num -= 1;
+            }
+            Counter_Rows -= 1;
         }
     }
 }
