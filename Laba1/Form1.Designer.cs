@@ -186,7 +186,6 @@ namespace Laba1
             // 
             // Gradation_transformations
             // 
-            this.Gradation_transformations.Enabled = false;
             this.Gradation_transformations.Location = new System.Drawing.Point(117, 42);
             this.Gradation_transformations.Name = "Gradation_transformations";
             this.Gradation_transformations.Size = new System.Drawing.Size(140, 31);

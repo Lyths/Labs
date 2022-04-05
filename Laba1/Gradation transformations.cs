@@ -15,6 +15,12 @@ namespace Laba1
         public Gradation_transformations()
         {
             InitializeComponent();
+
+            var canvas = new NPen();
+            canvas.Size = new Size(500, 500);
+            canvas.Location = new Point(0, 0);
+            CurvesPanel.Controls.Add(canvas);  
         }
+
     }
 }

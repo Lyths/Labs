@@ -39,3 +39,4 @@ C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.csproj.
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.csproj.CoreCompileInputs.cache
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.exe
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.pdb
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.Gradation_transformations.resources

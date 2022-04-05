@@ -93,7 +93,6 @@ namespace Laba1
                         checkBox_Green.Enabled = false;
                         checkBox_Blue.Enabled = false;
                     }
-                    Gradation_transformations.Enabled = true;
                 }
             }
         }
@@ -221,7 +220,7 @@ namespace Laba1
 
         private void Gradation_transformations_Click(object sender, EventArgs e)
         {
-            Gradation_transformations Window = new Gradation_transformations(); 
+            Gradation_transformations Window = new Gradation_transformations();
             Window.Show();
         }
     }
