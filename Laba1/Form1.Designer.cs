@@ -41,12 +41,13 @@ namespace Laba1
             this.checkBox_Blue = new System.Windows.Forms.CheckBox();
             this.DataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Gradation_transformations = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Apply = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.Clear = new System.Windows.Forms.Button();
             this.Remove = new System.Windows.Forms.Button();
+            this.Clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -117,9 +118,9 @@ namespace Laba1
             "Минимум",
             "Максимум",
             "Умножение"});
-            this.comboBox_regimes.Location = new System.Drawing.Point(136, 15);
+            this.comboBox_regimes.Location = new System.Drawing.Point(117, 15);
             this.comboBox_regimes.Name = "comboBox_regimes";
-            this.comboBox_regimes.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_regimes.Size = new System.Drawing.Size(140, 21);
             this.comboBox_regimes.TabIndex = 1;
             this.comboBox_regimes.SelectedIndexChanged += new System.EventHandler(this.comboBox_regimes_SelectedIndexChanged);
             // 
@@ -171,6 +172,7 @@ namespace Laba1
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.Gradation_transformations);
             this.groupBox3.Controls.Add(this.checkBox_Green);
             this.groupBox3.Controls.Add(this.checkBox_Red);
             this.groupBox3.Controls.Add(this.comboBox_regimes);
@@ -181,6 +183,17 @@ namespace Laba1
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры";
+            // 
+            // Gradation_transformations
+            // 
+            this.Gradation_transformations.Enabled = false;
+            this.Gradation_transformations.Location = new System.Drawing.Point(117, 42);
+            this.Gradation_transformations.Name = "Gradation_transformations";
+            this.Gradation_transformations.Size = new System.Drawing.Size(140, 31);
+            this.Gradation_transformations.TabIndex = 11;
+            this.Gradation_transformations.Text = "Grad. transformations";
+            this.Gradation_transformations.UseVisualStyleBackColor = true;
+            this.Gradation_transformations.Click += new System.EventHandler(this.Gradation_transformations_Click);
             // 
             // groupBox4
             // 
@@ -224,17 +237,6 @@ namespace Laba1
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             // 
-            // Clear
-            // 
-            this.Clear.Enabled = false;
-            this.Clear.Location = new System.Drawing.Point(6, 14);
-            this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(75, 23);
-            this.Clear.TabIndex = 11;
-            this.Clear.Text = "Clear";
-            this.Clear.UseVisualStyleBackColor = true;
-            this.Clear.Click += new System.EventHandler(this.Clear_Click);
-            // 
             // Remove
             // 
             this.Remove.Enabled = false;
@@ -245,6 +247,17 @@ namespace Laba1
             this.Remove.Text = "Remove";
             this.Remove.UseVisualStyleBackColor = true;
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
+            // 
+            // Clear
+            // 
+            this.Clear.Enabled = false;
+            this.Clear.Location = new System.Drawing.Point(6, 14);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(75, 23);
+            this.Clear.TabIndex = 11;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // Form1
             // 
@@ -292,6 +305,7 @@ namespace Laba1
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button Remove;
+        private System.Windows.Forms.Button Gradation_transformations;
     }
 }
 
