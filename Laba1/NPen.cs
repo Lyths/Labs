@@ -10,15 +10,16 @@ namespace Laba1
 {
     public partial class NPen : System.Windows.Forms.Panel
     {
-        private List<Rectangle> RectList;
-        private List<Point> PointList;
-        private Point[] Points = new Point[20];
+        private List<Point> PointList = new List<Point>();
+        private bool isDown = false;
+        private Point OldLocation;
+        private Point[] Points;
         public NPen()
         {
-            RectList = new List<Rectangle>();
-            PointList = new List<Point>();
             PointList.Add(new Point(390, 0));
             PointList.Add(new Point(0, 298));
+            Points = new Point[PointList.Count];
+            Func();
             this.SetStyle(
                 System.Windows.Forms.ControlStyles.UserPaint |
                 System.Windows.Forms.ControlStyles.AllPaintingInWmPaint |
@@ -37,15 +38,26 @@ namespace Laba1
             VisibleChanged += (s, a) => { y.Start(); };
         }
 
+        private void Func()
+        {
+
+            Points = new Point[PointList.Count];
+            PointList.CopyTo(Points);
+        }
+
         private void Pen_MouseMove(object sender, MouseEventArgs e)
         {
-            
+            if (isDown == true)
+            {
+
+            }
         }
 
         private void Pen_MouseUp(object sender, MouseEventArgs e)
         {
-            RectList.Add(new Rectangle(e.X, e.Y, 15, 15));
             PointList.Insert(1, new Point(e.X, e.Y));
+            Func();
+            isDown = false;
         }
 
         private void Pen_MouseDown(object sender, MouseEventArgs e)
@@ -53,12 +65,11 @@ namespace Laba1
 
             if (e.Button == MouseButtons.Left)
             {
+                OldLocation = e.Location;
 
             }
             else if (e.Button == MouseButtons.Right)
             {
-                RectList.Remove(new Rectangle(e.X, e.Y, 15, 15));
-                PointList.Remove(new Point(e.X, e.Y));
             }
 
         }
@@ -67,19 +78,15 @@ namespace Laba1
         {
             e.Graphics.FillRectangle(Brushes.Red, new Rectangle(390, 0, 15, 15));
             e.Graphics.FillRectangle(Brushes.Red, new Rectangle(0, 298, 15, 15));
-            foreach (var item in RectList)
+            if (Points.Length != 0)
             {
-                if (RectList.Count!=0)
+                foreach (var item in PointList)
                 {
-                    e.Graphics.FillRectangle(Brushes.Red, item);
+                    e.Graphics.FillRectangle(Brushes.Red, new Rectangle(item.X, item.Y, 15, 15));
                 }
-            }
-            for (int i = 0; i < PointList.Count; i++)
-            {
-                Points[i] = PointList[i];
-            }
-            e.Graphics.DrawCurve(new Pen(Brushes.Black), Points);
+                e.Graphics.DrawLines(new Pen(Brushes.Black), Points);
 
+            }
         }
     }
 }
