@@ -87,6 +87,7 @@ namespace Laba1
                     Remove.Enabled = false;
                     comboBox_regimes.SelectedItem = "Нет";
                     Clear.Enabled = true;
+                    Gradation_transformations.Enabled = true;
                     if (comboBox_regimes.Text == "Нет")
                     {
                         checkBox_Red.Enabled = false;
@@ -220,7 +221,7 @@ namespace Laba1
 
         private void Gradation_transformations_Click(object sender, EventArgs e)
         {
-            Gradation_transformations Window = new Gradation_transformations();
+            Gradation_transformations Window = new Gradation_transformations(DataGrid.CurrentRow.Cells[6].Value.ToString());
             Window.Show();
         }
     }
