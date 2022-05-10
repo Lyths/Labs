@@ -87,7 +87,7 @@ namespace Laba1
                     Remove.Enabled = false;
                     comboBox_regimes.SelectedItem = "Нет";
                     Clear.Enabled = true;
-                    Gradation_transformations.Enabled = true;
+                    BinTrans.Enabled = true;
                     if (comboBox_regimes.Text == "Нет")
                     {
                         checkBox_Red.Enabled = false;
@@ -222,6 +222,46 @@ namespace Laba1
         private void Gradation_transformations_Click(object sender, EventArgs e)
         {
             Gradation_transformations Window = new Gradation_transformations(DataGrid.CurrentRow.Cells[6].Value.ToString());
+            Window.Show();
+        }
+
+        private void NextButtons_Click(object sender, EventArgs e)
+        {
+            Clear.Visible = false;
+            Open.Visible = false;
+            Save.Visible = false;
+            Add.Visible = false;
+            Apply.Visible = false;
+            Remove.Visible = false;
+            BinTrans.Visible = true;
+            PreviousButtons.Visible = true;
+            NextButtons.Visible = false;
+            Fourth_lab.Visible = true;
+        }
+
+        private void PreviousButtons_Click(object sender, EventArgs e)
+        {
+            Clear.Visible = true;
+            Open.Visible = true;
+            Save.Visible = true;
+            Add.Visible = true;
+            Apply.Visible = true;
+            Remove.Visible = true;
+            BinTrans.Visible = false;
+            PreviousButtons.Visible = false;
+            NextButtons.Visible = true;
+            Fourth_lab.Visible = false;
+        }
+
+        private void BinTrans_Click(object sender, EventArgs e)
+        {
+            BinTransform Window = new BinTransform(DataGrid.CurrentRow.Cells[6].Value.ToString());
+            Window.Show();
+        }
+
+        private void Fourth_lab_Click(object sender, EventArgs e)
+        {
+            Fourth_Lab Window = new Fourth_Lab(DataGrid.CurrentRow.Cells[6].Value.ToString());
             Window.Show();
         }
     }

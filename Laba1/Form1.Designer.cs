@@ -34,6 +34,7 @@ namespace Laba1
             this.Open = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BinTrans = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox_regimes = new System.Windows.Forms.ComboBox();
             this.checkBox_Red = new System.Windows.Forms.CheckBox();
@@ -48,6 +49,9 @@ namespace Laba1
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Remove = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
+            this.NextButtons = new System.Windows.Forms.Button();
+            this.PreviousButtons = new System.Windows.Forms.Button();
+            this.Fourth_lab = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,6 +94,8 @@ namespace Laba1
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Fourth_lab);
+            this.groupBox1.Controls.Add(this.BinTrans);
             this.groupBox1.Controls.Add(this.Open);
             this.groupBox1.Controls.Add(this.Save);
             this.groupBox1.Location = new System.Drawing.Point(522, 387);
@@ -97,6 +103,18 @@ namespace Laba1
             this.groupBox1.Size = new System.Drawing.Size(200, 51);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // BinTrans
+            // 
+            this.BinTrans.Enabled = false;
+            this.BinTrans.Location = new System.Drawing.Point(119, 19);
+            this.BinTrans.Name = "BinTrans";
+            this.BinTrans.Size = new System.Drawing.Size(75, 23);
+            this.BinTrans.TabIndex = 12;
+            this.BinTrans.Text = "Bin";
+            this.BinTrans.UseVisualStyleBackColor = true;
+            this.BinTrans.Visible = false;
+            this.BinTrans.Click += new System.EventHandler(this.BinTrans_Click);
             // 
             // groupBox2
             // 
@@ -259,11 +277,45 @@ namespace Laba1
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
+            // NextButtons
+            // 
+            this.NextButtons.Location = new System.Drawing.Point(734, 304);
+            this.NextButtons.Name = "NextButtons";
+            this.NextButtons.Size = new System.Drawing.Size(21, 134);
+            this.NextButtons.TabIndex = 12;
+            this.NextButtons.Text = ">>>>";
+            this.NextButtons.UseVisualStyleBackColor = true;
+            this.NextButtons.Click += new System.EventHandler(this.NextButtons_Click);
+            // 
+            // PreviousButtons
+            // 
+            this.PreviousButtons.Location = new System.Drawing.Point(492, 304);
+            this.PreviousButtons.Name = "PreviousButtons";
+            this.PreviousButtons.Size = new System.Drawing.Size(21, 134);
+            this.PreviousButtons.TabIndex = 13;
+            this.PreviousButtons.Text = "<<<<";
+            this.PreviousButtons.UseVisualStyleBackColor = true;
+            this.PreviousButtons.Visible = false;
+            this.PreviousButtons.Click += new System.EventHandler(this.PreviousButtons_Click);
+            // 
+            // Fourth_lab
+            // 
+            this.Fourth_lab.Location = new System.Drawing.Point(6, 19);
+            this.Fourth_lab.Name = "Fourth_lab";
+            this.Fourth_lab.Size = new System.Drawing.Size(75, 23);
+            this.Fourth_lab.TabIndex = 14;
+            this.Fourth_lab.Text = "Fourth_lab";
+            this.Fourth_lab.UseVisualStyleBackColor = true;
+            this.Fourth_lab.Visible = false;
+            this.Fourth_lab.Click += new System.EventHandler(this.Fourth_lab_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 452);
+            this.Controls.Add(this.PreviousButtons);
+            this.Controls.Add(this.NextButtons);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -306,6 +358,10 @@ namespace Laba1
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Button Gradation_transformations;
+        private System.Windows.Forms.Button NextButtons;
+        private System.Windows.Forms.Button PreviousButtons;
+        private System.Windows.Forms.Button BinTrans;
+        private System.Windows.Forms.Button Fourth_lab;
     }
 }
 
