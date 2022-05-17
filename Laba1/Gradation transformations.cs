@@ -27,7 +27,7 @@ namespace Laba1
             Points_of_Curve.Add(new Point(390, 0));
             Points_of_Curve.Add(new Point(0, 298));
 
-            var canvas = new NPen();
+            /*var canvas = new NPen();
             canvas.Size = new Size(500, 500);
             canvas.Location = new Point(0, 0);
             NPen.ter(Points_of_Curve);
@@ -35,7 +35,7 @@ namespace Laba1
 
             image = new Bitmap(256, Gistogramma.Height);
             Gistogramma.Image = image;
-            Histogram();
+            Histogram();*/
         }
 
         private void Add_coord_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace Laba1
             Points_of_Curve.Remove(new Point(0, 298));
             Points_of_Curve.Add(new Point(Convert.ToInt32(X_coord.Text), Convert.ToInt32(Y_coord.Text)));
             Points_of_Curve.Add(new Point(0, 298));
-            NPen.ter(Points_of_Curve);
+            //NPen.ter(Points_of_Curve);
             Histogram();
         }
 
@@ -89,7 +89,7 @@ namespace Laba1
             Points_of_Curve.Clear();
             Points_of_Curve.Add(new Point(390, 0));
             Points_of_Curve.Add(new Point(0, 298));
-            NPen.ter(Points_of_Curve);
+            //NPen.ter(Points_of_Curve);
             Histogram();
             TransformedPicture.Image = Transforming_Pic;
             TransformedPicture.Refresh();

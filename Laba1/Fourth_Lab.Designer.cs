@@ -36,6 +36,10 @@
             this.Linear = new System.Windows.Forms.Button();
             this.Gaus = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
+            this.SigmaBox = new System.Windows.Forms.TextBox();
+            this.SizeBox = new System.Windows.Forms.TextBox();
+            this.Sigma = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FourthBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FourthBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FourthBox3)).BeginInit();
@@ -110,6 +114,7 @@
             this.Gaus.TabIndex = 7;
             this.Gaus.Text = "Gaus";
             this.Gaus.UseVisualStyleBackColor = true;
+            this.Gaus.Click += new System.EventHandler(this.Gaus_Click);
             // 
             // textBox
             // 
@@ -118,11 +123,47 @@
             this.textBox.Size = new System.Drawing.Size(100, 20);
             this.textBox.TabIndex = 8;
             // 
+            // SigmaBox
+            // 
+            this.SigmaBox.Location = new System.Drawing.Point(990, 253);
+            this.SigmaBox.Name = "SigmaBox";
+            this.SigmaBox.Size = new System.Drawing.Size(51, 20);
+            this.SigmaBox.TabIndex = 9;
+            // 
+            // SizeBox
+            // 
+            this.SizeBox.Location = new System.Drawing.Point(990, 279);
+            this.SizeBox.Name = "SizeBox";
+            this.SizeBox.Size = new System.Drawing.Size(51, 20);
+            this.SizeBox.TabIndex = 10;
+            // 
+            // Sigma
+            // 
+            this.Sigma.AutoSize = true;
+            this.Sigma.Location = new System.Drawing.Point(949, 256);
+            this.Sigma.Name = "Sigma";
+            this.Sigma.Size = new System.Drawing.Size(36, 13);
+            this.Sigma.TabIndex = 11;
+            this.Sigma.Text = "Sigma";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(927, 282);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Matrix Size";
+            // 
             // Fourth_Lab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 424);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Sigma);
+            this.Controls.Add(this.SizeBox);
+            this.Controls.Add(this.SigmaBox);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.Gaus);
             this.Controls.Add(this.Linear);
@@ -152,5 +193,9 @@
         private System.Windows.Forms.Button Linear;
         private System.Windows.Forms.Button Gaus;
         private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.TextBox SigmaBox;
+        private System.Windows.Forms.TextBox SizeBox;
+        private System.Windows.Forms.Label Sigma;
+        private System.Windows.Forms.Label label2;
     }
 }

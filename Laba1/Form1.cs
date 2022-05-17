@@ -237,6 +237,7 @@ namespace Laba1
             PreviousButtons.Visible = true;
             NextButtons.Visible = false;
             Fourth_lab.Visible = true;
+            Fifth_Lab.Visible = true;
         }
 
         private void PreviousButtons_Click(object sender, EventArgs e)
@@ -251,6 +252,7 @@ namespace Laba1
             PreviousButtons.Visible = false;
             NextButtons.Visible = true;
             Fourth_lab.Visible = false;
+            Fifth_Lab.Visible = false;
         }
 
         private void BinTrans_Click(object sender, EventArgs e)
@@ -262,6 +264,12 @@ namespace Laba1
         private void Fourth_lab_Click(object sender, EventArgs e)
         {
             Fourth_Lab Window = new Fourth_Lab(DataGrid.CurrentRow.Cells[6].Value.ToString());
+            Window.Show();
+        }
+
+        private void Fifth_Lab_Click(object sender, EventArgs e)
+        {
+            Fifth_Lab Window = new Fifth_Lab(DataGrid.CurrentRow.Cells[6].Value.ToString());
             Window.Show();
         }
     }

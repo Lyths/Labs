@@ -11,7 +11,7 @@ using System.ComponentModel;
 
 namespace Laba1
 {
-    class Table
+    internal class Table
     {
         public int Num { get; set; }
         public string Name { get; }

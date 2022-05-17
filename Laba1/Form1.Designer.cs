@@ -34,6 +34,7 @@ namespace Laba1
             this.Open = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Fourth_lab = new System.Windows.Forms.Button();
             this.BinTrans = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox_regimes = new System.Windows.Forms.ComboBox();
@@ -51,7 +52,7 @@ namespace Laba1
             this.Clear = new System.Windows.Forms.Button();
             this.NextButtons = new System.Windows.Forms.Button();
             this.PreviousButtons = new System.Windows.Forms.Button();
-            this.Fourth_lab = new System.Windows.Forms.Button();
+            this.Fifth_Lab = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -103,6 +104,17 @@ namespace Laba1
             this.groupBox1.Size = new System.Drawing.Size(200, 51);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // Fourth_lab
+            // 
+            this.Fourth_lab.Location = new System.Drawing.Point(6, 19);
+            this.Fourth_lab.Name = "Fourth_lab";
+            this.Fourth_lab.Size = new System.Drawing.Size(75, 23);
+            this.Fourth_lab.TabIndex = 14;
+            this.Fourth_lab.Text = "Fourth_lab";
+            this.Fourth_lab.UseVisualStyleBackColor = true;
+            this.Fourth_lab.Visible = false;
+            this.Fourth_lab.Click += new System.EventHandler(this.Fourth_lab_Click);
             // 
             // BinTrans
             // 
@@ -215,6 +227,7 @@ namespace Laba1
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.Fifth_Lab);
             this.groupBox4.Controls.Add(this.Apply);
             this.groupBox4.Controls.Add(this.Add);
             this.groupBox4.Location = new System.Drawing.Point(522, 339);
@@ -298,16 +311,16 @@ namespace Laba1
             this.PreviousButtons.Visible = false;
             this.PreviousButtons.Click += new System.EventHandler(this.PreviousButtons_Click);
             // 
-            // Fourth_lab
+            // Fifth_Lab
             // 
-            this.Fourth_lab.Location = new System.Drawing.Point(6, 19);
-            this.Fourth_lab.Name = "Fourth_lab";
-            this.Fourth_lab.Size = new System.Drawing.Size(75, 23);
-            this.Fourth_lab.TabIndex = 14;
-            this.Fourth_lab.Text = "Fourth_lab";
-            this.Fourth_lab.UseVisualStyleBackColor = true;
-            this.Fourth_lab.Visible = false;
-            this.Fourth_lab.Click += new System.EventHandler(this.Fourth_lab_Click);
+            this.Fifth_Lab.Location = new System.Drawing.Point(119, 19);
+            this.Fifth_Lab.Name = "Fifth_Lab";
+            this.Fifth_Lab.Size = new System.Drawing.Size(75, 23);
+            this.Fifth_Lab.TabIndex = 15;
+            this.Fifth_Lab.Text = "Fifth_lab";
+            this.Fifth_Lab.UseVisualStyleBackColor = true;
+            this.Fifth_Lab.Visible = false;
+            this.Fifth_Lab.Click += new System.EventHandler(this.Fifth_Lab_Click);
             // 
             // Form1
             // 
@@ -362,6 +375,7 @@ namespace Laba1
         private System.Windows.Forms.Button PreviousButtons;
         private System.Windows.Forms.Button BinTrans;
         private System.Windows.Forms.Button Fourth_lab;
+        private System.Windows.Forms.Button Fifth_Lab;
     }
 }
 

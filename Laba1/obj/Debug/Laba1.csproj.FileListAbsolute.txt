@@ -42,3 +42,9 @@ C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.pdb
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.Gradation_transformations.resources
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.BinTransform.resources
 C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.Fourth_Lab.resources
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.Fifth_Lab.resources
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\bin\Debug\AForge.Imaging.dll
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\bin\Debug\AForge.Math.dll
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\bin\Debug\AForge.Imaging.xml
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\bin\Debug\AForge.Math.xml
+C:\Users\Артур\Desktop\Лабы\СЦОИ\Lab1\Laba1\obj\Debug\Laba1.csproj.CopyComplete

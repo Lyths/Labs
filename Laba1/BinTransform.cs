@@ -18,21 +18,31 @@ namespace Laba1
             InitializeComponent();
 
             this.Transforming_Pic = new Bitmap(Transforming_Pic);
-            BinBox.Image = this.Transforming_Pic;
+            StartBox.Image = this.Transforming_Pic;
         }
 
         private void Apply_Click(object sender, EventArgs e)
         {
-            if (GavrilovMethod.Checked == false)
-            {
-                MessageBox.Show("Отметьте метод обработки!");
-                return;
-            }
-            if (GavrilovMethod.Checked == true)
-            {
-                Transforming_Pic = BinTransformClass.Gavrilov(Transforming_Pic);
-            }
-            BinBox.Refresh();
+            Bitmap resultBitmap = new Bitmap((Bitmap)StartBox.Image);
+            GavrilovBox.Image = BinTransformClass.Gavrilov(resultBitmap);
+        }
+
+        private void OtsuButton_Click(object sender, EventArgs e)
+        {
+            Bitmap resultBitmap = new Bitmap((Bitmap)StartBox.Image);
+            OtsuBox.Image = BinTransformClass.Otsu(resultBitmap);
+        }
+
+        private void NiblecButton_Click(object sender, EventArgs e)
+        {
+            Bitmap resultBitmap = new Bitmap((Bitmap)StartBox.Image);
+            NiblecBox.Image = BinTransformClass.Niblec(resultBitmap, 9);
+        }
+
+        private void SauvButton_Click(object sender, EventArgs e)
+        {
+            Bitmap resultBitmap = new Bitmap((Bitmap)StartBox.Image);
+            SauvBox.Image = BinTransformClass.Sauv(resultBitmap, 9);
         }
     }
 }
