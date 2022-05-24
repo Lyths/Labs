@@ -35,13 +35,13 @@
             this.NiblecBox = new System.Windows.Forms.PictureBox();
             this.OtsuButton = new System.Windows.Forms.Button();
             this.NiblecButton = new System.Windows.Forms.Button();
-            this.SauvBox = new System.Windows.Forms.PictureBox();
-            this.SauvButton = new System.Windows.Forms.Button();
+            this.SauvolBox = new System.Windows.Forms.PictureBox();
+            this.Sauvol = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StartBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GavrilovBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OtsuBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NiblecBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SauvBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SauvolBox)).BeginInit();
             this.SuspendLayout();
             // 
             // StartBox
@@ -114,33 +114,33 @@
             this.NiblecButton.UseVisualStyleBackColor = true;
             this.NiblecButton.Click += new System.EventHandler(this.NiblecButton_Click);
             // 
-            // SauvBox
+            // SauvolBox
             // 
-            this.SauvBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SauvBox.Location = new System.Drawing.Point(24, 305);
-            this.SauvBox.Name = "SauvBox";
-            this.SauvBox.Size = new System.Drawing.Size(213, 183);
-            this.SauvBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SauvBox.TabIndex = 8;
-            this.SauvBox.TabStop = false;
+            this.SauvolBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SauvolBox.Location = new System.Drawing.Point(961, 22);
+            this.SauvolBox.Name = "SauvolBox";
+            this.SauvolBox.Size = new System.Drawing.Size(218, 183);
+            this.SauvolBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SauvolBox.TabIndex = 8;
+            this.SauvolBox.TabStop = false;
             // 
-            // SauvButton
+            // Sauvol
             // 
-            this.SauvButton.Location = new System.Drawing.Point(296, 388);
-            this.SauvButton.Name = "SauvButton";
-            this.SauvButton.Size = new System.Drawing.Size(117, 28);
-            this.SauvButton.TabIndex = 9;
-            this.SauvButton.Text = "Sauv";
-            this.SauvButton.UseVisualStyleBackColor = true;
-            this.SauvButton.Click += new System.EventHandler(this.SauvButton_Click);
+            this.Sauvol.Location = new System.Drawing.Point(1018, 211);
+            this.Sauvol.Name = "Sauvol";
+            this.Sauvol.Size = new System.Drawing.Size(117, 28);
+            this.Sauvol.TabIndex = 9;
+            this.Sauvol.Text = "Sauvol";
+            this.Sauvol.UseVisualStyleBackColor = true;
+            this.Sauvol.Click += new System.EventHandler(this.Sauvol_Click);
             // 
             // BinTransform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 583);
-            this.Controls.Add(this.SauvButton);
-            this.Controls.Add(this.SauvBox);
+            this.ClientSize = new System.Drawing.Size(1204, 375);
+            this.Controls.Add(this.Sauvol);
+            this.Controls.Add(this.SauvolBox);
             this.Controls.Add(this.NiblecButton);
             this.Controls.Add(this.OtsuButton);
             this.Controls.Add(this.NiblecBox);
@@ -154,7 +154,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GavrilovBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OtsuBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NiblecBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SauvBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SauvolBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -168,7 +168,7 @@
         private System.Windows.Forms.PictureBox NiblecBox;
         private System.Windows.Forms.Button OtsuButton;
         private System.Windows.Forms.Button NiblecButton;
-        private System.Windows.Forms.PictureBox SauvBox;
-        private System.Windows.Forms.Button SauvButton;
+        private System.Windows.Forms.PictureBox SauvolBox;
+        private System.Windows.Forms.Button Sauvol;
     }
 }

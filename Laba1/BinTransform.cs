@@ -36,13 +36,13 @@ namespace Laba1
         private void NiblecButton_Click(object sender, EventArgs e)
         {
             Bitmap resultBitmap = new Bitmap((Bitmap)StartBox.Image);
-            NiblecBox.Image = BinTransformClass.Niblec(resultBitmap, 9);
+            NiblecBox.Image = BinTransformClass.Niblec(resultBitmap, 9, -0.2);
         }
 
-        private void SauvButton_Click(object sender, EventArgs e)
+        private void Sauvol_Click(object sender, EventArgs e)
         {
             Bitmap resultBitmap = new Bitmap((Bitmap)StartBox.Image);
-            SauvBox.Image = BinTransformClass.Sauv(resultBitmap, 9);
+            SauvolBox.Image = BinTransformClass.Sauvol(resultBitmap, 9, 0.25);
         }
     }
 }

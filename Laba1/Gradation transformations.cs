@@ -69,7 +69,7 @@ namespace Laba1
                 }
             }
             max = N.Max();
-            Graphics g = Graphics.FromImage(image);
+            Graphics g = Graphics.FromImage(image); 
             for (int i = 0; i < 256; i++)
             {
                 A = new Point(i, Gistogramma.Height - 1); 
